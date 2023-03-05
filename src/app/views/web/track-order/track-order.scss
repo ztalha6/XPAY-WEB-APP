@@ -1,0 +1,61 @@
+.track-order{
+  .order-id{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 76px;
+    color: #707581;
+  }
+  .btn-dispute{
+    background: #EC3333;
+    border-radius: 6.17978px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 10px 30px;
+  }
+  .order-detail{
+    ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+      li{
+        display: flex;
+        align-items: center;
+        h4{
+          font-style: normal;
+          font-weight: 500;
+          font-size: 22px;
+          line-height: 40px;
+          color: #707581;
+          margin-bottom: 0;
+          margin-right: 10px;
+        }
+        p{
+          font-style: normal;
+          font-weight: 500;
+          font-size: 22px;
+          line-height: 40px;
+          color: #1C212D;
+          margin-bottom: 0;
+        }
+        h6{
+          font-style: normal;
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 40px;
+          color: #13BA52;
+          margin-bottom: 0;
+          svg{
+            font-size: 25px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

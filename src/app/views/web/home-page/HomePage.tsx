@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Form, Input} from 'antd';
 
 import "./home-page.scss"
 import {Col, Container, Row} from "react-bootstrap";
 import fi from "../../../../assets/images/icons/vendors/flip.png"
+import {useUserContext} from "../../../providers/UserProvider";
 
 export default function HomePage() {
+
+    const {myState, setMyState} = useUserContext()
+    useEffect(()=>{
+        setMyState('transparent')
+    })
+
     const onFinish = (values: any) => {
         console.log('Success:', values);
     };

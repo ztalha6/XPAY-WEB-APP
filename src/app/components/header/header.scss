@@ -4,6 +4,23 @@ header{
   position: absolute;
   width: 100%;
   z-index: 999;
+  &.fixed{
+    position: relative;
+    .ant-row{
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding-bottom: 30px;
+    }
+    .menu{
+      ul{
+        li{
+          color: #1758FF;
+          a{
+            color: #707581;
+          }
+        }
+      }
+    }
+  }
   .menu{
     display: flex;
     align-items: center;

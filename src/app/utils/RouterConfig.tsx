@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 import AppLayout from "../layouts/AppLayout";
 import HomePage from "../views/web/home-page/HomePage";
+import TrackOrder from "../views/web/track-order/TrackOrder";
+import UserProvider from "../providers/UserProvider";
 
 
 function RouteConfig() {
@@ -24,8 +26,14 @@ function RouteConfig() {
                 {/*    <Route path="/user-verification" element={<Verification/>} />*/}
                 {/*</Route>*/}
 
-                <Route element={<AppLayout />}>
+                <Route element={
+                    <UserProvider>
+                        <AppLayout />
+                    </UserProvider>
+                }
+                >
                     <Route index element={<HomePage/>} />
+                    <Route path="/track-order" element={<TrackOrder/>} />
                 </Route>
                 {/*APP LAYOUT ROUTES*/}
                 {/*<Route element={*/}

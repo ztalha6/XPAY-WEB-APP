@@ -5,8 +5,10 @@ import logo from "../../../assets/images/logo.png"
 import {MailOutlined} from '@ant-design/icons';
 import "./header.scss"
 import {Link} from "react-router-dom";
+import {useUserContext} from "../../providers/UserProvider";
 
 export default function Header() {
+    const {myState} = useUserContext()
     const [current, setCurrent] = useState('mail');
 
     const onClick: MenuProps['onClick'] = (e) => {
@@ -33,7 +35,7 @@ export default function Header() {
     ];
 
     return(
-        <header>
+        <header className={myState}>
             <div className={'container'}>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} align={'middle'}>
                     <Col span={12}><img src={logo} className={'img-fluid'}/> </Col>
@@ -41,7 +43,10 @@ export default function Header() {
                         <div className={"menu"}>
                             <ul>
                                 <li>
-                                    <Link to="/">Track</Link>
+                                    <Link to="/">Home</Link>
+                                </li>
+                                <li>
+                                    <Link to="/track-order">Track</Link>
                                 </li>
                                 <li>
                                     <Link to="/about">Our Vendors</Link>
