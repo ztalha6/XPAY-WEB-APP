@@ -1,25 +1,35 @@
-import React from "react"
-import {Link, useLocation, useMatch} from 'react-router-dom';
+import {FC} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 
-export default function Breadcrumb() {
+interface BreadcrumbsProps {}
+
+const BreadCrumb: FC<BreadcrumbsProps> = () => {
     const location = useLocation();
-    const match = useMatch('/:url*'); // this will match any route
+    const pathnames = location.pathname.split('/').filter((x) => x);
 
-    // split the URL path into an array of segments
-    const segments = location.pathname.split('/').filter((segment) => segment !== '');
+    return (
+        <div>
+            <Link to="/">Home</Link>
+            {pathnames.length > 0 && (
+                <>
+                    <span> / </span>
+                    <span>{pathnames[0]}</span>
+                </>
+            )}
+            {pathnames.length > 1 && (
+                <>
+                    <span> / </span>
+                    <Link to={`/${pathnames[0]}/${pathnames[1]}`}>{pathnames[1]}</Link>
+                </>
+            )}
+            {pathnames.length > 2 && (
+                <>
+                    <span> / </span>
+                    <span>{pathnames[2]}</span>
+                </>
+            )}
+        </div>
+    );
+};
 
-    // generate the breadcrumb links
-    const breadcrumbs = segments.map((segment, index) => {
-        const url = `/${segments.slice(0, index + 1).join('/')}`;
-        const isLastSegment = index === segments.length - 1;
-
-        return (
-            <React.Fragment key={url}>
-                <Link to={url}>{segment}</Link>
-                {!isLastSegment && <span> / </span>}
-            </React.Fragment>
-        );
-    });
-
-    return <div>{breadcrumbs}</div>;
-}
+export default BreadCrumb;

@@ -4,6 +4,7 @@ import AppLayout from "../layouts/AppLayout";
 import HomePage from "../views/web/home-page/HomePage";
 import TrackOrder from "../views/web/track-order/TrackOrder";
 import UserProvider from "../providers/UserProvider";
+import Dispute from "../views/web/dispute/Dispute";
 
 
 function RouteConfig() {
@@ -34,6 +35,7 @@ function RouteConfig() {
                 >
                     <Route index element={<HomePage/>} />
                     <Route path="/track-order" element={<TrackOrder/>} />
+                    <Route path="/dispute" element={<Dispute/>} />
                 </Route>
                 {/*APP LAYOUT ROUTES*/}
                 {/*<Route element={*/}
