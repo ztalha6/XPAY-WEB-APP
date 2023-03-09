@@ -15,6 +15,10 @@
     font-size: 18px;
     color: #FFFFFF;
     padding: 10px 30px;
+    &:hover{
+      border: 1px solid #EC3333;
+      color: #EC3333;
+    }
   }
   .order-detail{
     ul{

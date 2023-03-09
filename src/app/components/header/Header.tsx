@@ -36,7 +36,7 @@ export default function Header() {
                                     <Link to="/contact">Contact us</Link>
                                 </li>
                                 <li>
-                                    <Link to="/contact">Login</Link>
+                                    <button className={'btn btn-login'}>Login</button>
                                 </li>
                             </ul>
                         </div>
