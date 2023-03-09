@@ -4,6 +4,43 @@ header{
   position: absolute;
   width: 100%;
   z-index: 999;
+  .btn-login{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #1758FF;
+    border-radius: 5px;
+    padding: 10px 40px;
+    &:hover{
+      color:white;
+      border: 1px solid white;
+    }
+  }
+  &.fixed{
+    position: relative;
+    .btn-login{
+      &:hover{
+        color:#1758FF ;
+        border: 1px solid #1758FF;
+      }
+    }
+    .ant-row{
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding-bottom: 30px;
+    }
+    .menu{
+      ul{
+        li{
+          color: #1758FF;
+          a{
+            color: #707581;
+          }
+        }
+      }
+    }
+  }
   .menu{
     display: flex;
     align-items: center;

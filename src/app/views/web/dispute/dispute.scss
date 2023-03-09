@@ -1,0 +1,56 @@
+.dispute{
+  h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 76px;
+    color: #1C212D;
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+  p{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #646C7C;
+    margin-bottom: 30px;
+  }
+  font-family: Poppins;
+  .ant-form-item{
+    label{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 27px;
+      color: #000000;
+    }
+    .ant-input{
+      border-radius: 3px;
+      padding: 8px 10px;
+    }
+  }
+  .ant-upload-list-item{
+    border-radius: 3px;
+  }
+  .ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item{
+    border-radius: 3px;
+  }
+  .btn-dispute{
+    background: #EC3333;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Poppins;
+    width: 100%;
+    padding: 10px;
+    &:hover{
+      border: 1px solid #EC3333;
+      color: #EC3333;
+    }
+  }
+}
