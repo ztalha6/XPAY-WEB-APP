@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import {Col, Container, Row} from "react-bootstrap";
 import {useUserContext} from "../../../providers/UserProvider";
 import BreadCrumb from "../../../components/breadcrumb/BreadCrumb";
@@ -6,8 +6,12 @@ import {Button, Form, Input, Upload} from "antd";
 import {UploadOutlined} from '@ant-design/icons';
 import TextArea from "antd/es/input/TextArea";
 import "./dispute.scss"
+import ThemeModal from "../../../components/modal/Modal";
+import Verification from "../verification/Verification";
+
 
 export default function Dispute() {
+    const[open, setOpen] = useState<boolean>(false);
     const {myState, setMyState} = useUserContext()
     useEffect(()=>{
         setMyState('fixed')
@@ -122,6 +126,7 @@ export default function Dispute() {
                                 {/*    </Button>*/}
                                 {/*</Form.Item>*/}
                             <button type={"submit"} className={'btn btn-dispute'}>Place Dispute</button>
+
                         </Form>
                     </Col>
                 </Row>

@@ -8,8 +8,11 @@ import {FaCcVisa} from "react-icons/fa";
 import {useNavigate, useParams} from 'react-router-dom';
 import {PaymentServices} from "../../../services/api-services/payment.service";
 import {IPaymentListing, IPaymentOrderItem} from "../../../interfaces/IPayment";
+import ThemeModal from "../../../components/modal/Modal";
+import Verification from "../verification/Verification";
 
 export default function TrackOrder() {
+    const[open, setOpen] = useState<boolean>(false);
     const {myState, setMyState} = useUserContext()
     const navigate = useNavigate();
     const [singlePayment, setSinglePayment] = useState<IPaymentListing>()
@@ -30,10 +33,19 @@ export default function TrackOrder() {
     },[])
 
     function DisputePage() {
-        navigate('/dispute');
+        setOpen(!open)
+        // navigate('/dispute');
     }
     return(
         <>
+            <ThemeModal
+                active={open}
+                setActive={setOpen}
+                width={750}
+                children={
+                    <Verification/>
+                }
+            />
             <div className={"track-order"}>
                 <Container>
                     <Row>
