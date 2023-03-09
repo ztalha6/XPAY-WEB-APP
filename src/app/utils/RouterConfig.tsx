@@ -34,7 +34,7 @@ function RouteConfig() {
                 }
                 >
                     <Route index element={<HomePage/>} />
-                    <Route path="/track-order" element={<TrackOrder/>} />
+                    <Route path="/track-order/:id" element={<TrackOrder/>} />
                     <Route path="/dispute" element={<Dispute/>} />
                 </Route>
                 {/*APP LAYOUT ROUTES*/}

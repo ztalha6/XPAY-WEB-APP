@@ -1,20 +1,42 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Form, Input} from 'antd';
 
 import "./home-page.scss"
 import {Col, Container, Row} from "react-bootstrap";
 import fi from "../../../../assets/images/icons/vendors/flip.png"
 import {useUserContext} from "../../../providers/UserProvider";
+import {ITrackPayment, IVendorBusinessDetail} from "../../../interfaces/IPayment";
+import {PaymentServices} from "../../../services/api-services/payment.service";
+import {useNavigate} from "react-router-dom";
+import {IntegratedBusinessService} from "../../../services/api-services/integrated-business.service";
 
 export default function HomePage() {
 
     const {myState, setMyState} = useUserContext()
+    const navigator = useNavigate()
+    const [integratedBusinesses, setIntegratedBusinesses] = useState<IVendorBusinessDetail[]>([])
+
+
+
+    const getIntegratedBusiness = async () => {
+        const res = await IntegratedBusinessService.all()
+        if(res.status) {
+            setIntegratedBusinesses(res.data)
+        }
+    }
+
+
     useEffect(()=>{
         setMyState('transparent')
-    })
+        getIntegratedBusiness()
+    },[])
 
-    const onFinish = (values: any) => {
+    const onFinish = async (values: ITrackPayment) => {
         console.log('Success:', values);
+        const res = await PaymentServices.getById(values.track_num)
+        if(res.status) {
+            navigator(  `/track-order/${res.data.id}`)
+        }
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -40,7 +62,7 @@ export default function HomePage() {
                                     <div className={'search-box'}>
                                         <Form.Item
                                             name="track_num"
-                                            // rules={[{ required: true, message: 'Please input your username!' }]}
+                                            rules={[{ required: true, message: 'Please input order tracking number!' }]}
                                         >
                                             <Input placeholder={'track your order number'} />
                                         </Form.Item>
@@ -71,46 +93,50 @@ export default function HomePage() {
                         </Col>
                     </Row>
                     <Row className={"mt-5"}>
-                        <Col md={3}>
-                            <div className={"vendor-box"}>
-                                <img src={fi} className={'img-fluid'}/>
-                                <h3>Flipkart</h3>
-                                <p>Lorem Ipsum is simply dummy
-                                    text of the printing and
-                                    typesetting industry.</p>
-                                <a href={""}>View Store</a>
-                            </div>
-                        </Col>
-                        <Col md={3}>
-                            <div className={"vendor-box"}>
-                                <img src={fi} className={'img-fluid'}/>
-                                <h3>Flipkart</h3>
-                                <p>Lorem Ipsum is simply dummy
-                                    text of the printing and
-                                    typesetting industry.</p>
-                                <a href={""}>View Store</a>
-                            </div>
-                        </Col>
-                        <Col md={3}>
-                            <div className={"vendor-box"}>
-                                <img src={fi} className={'img-fluid'}/>
-                                <h3>Flipkart</h3>
-                                <p>Lorem Ipsum is simply dummy
-                                    text of the printing and
-                                    typesetting industry.</p>
-                                <a href={""}>View Store</a>
-                            </div>
-                        </Col>
-                        <Col md={3}>
-                            <div className={"vendor-box"}>
-                                <img src={fi} className={'img-fluid'}/>
-                                <h3>Flipkart</h3>
-                                <p>Lorem Ipsum is simply dummy
-                                    text of the printing and
-                                    typesetting industry.</p>
-                                <a href={""}>View Store</a>
-                            </div>
-                        </Col>
+                        {integratedBusinesses.map((integratedBusiness: IVendorBusinessDetail)=> {
+                            return (
+                                <Col md={3}>
+                                    <div className={"vendor-box"}>
+                                        <img src={fi} className={'img-fluid'}/>
+                                        <h3>{integratedBusiness.business_name}</h3>
+                                        <p>Lorem Ipsum is simply dummy
+                                            text of the printing and
+                                            typesetting industry.</p>
+                                        <a href={integratedBusiness.website_url} target={'_blank'}>View Store</a>
+                                    </div>
+                                </Col>
+                            )
+                        })}
+                        {/*<Col md={3}>*/}
+                        {/*    <div className={"vendor-box"}>*/}
+                        {/*        <img src={fi} className={'img-fluid'}/>*/}
+                        {/*        <h3>Flipkart</h3>*/}
+                        {/*        <p>Lorem Ipsum is simply dummy*/}
+                        {/*            text of the printing and*/}
+                        {/*            typesetting industry.</p>*/}
+                        {/*        <a href={""}>View Store</a>*/}
+                        {/*    </div>*/}
+                        {/*</Col>*/}
+                        {/*<Col md={3}>*/}
+                        {/*    <div className={"vendor-box"}>*/}
+                        {/*        <img src={fi} className={'img-fluid'}/>*/}
+                        {/*        <h3>Flipkart</h3>*/}
+                        {/*        <p>Lorem Ipsum is simply dummy*/}
+                        {/*            text of the printing and*/}
+                        {/*            typesetting industry.</p>*/}
+                        {/*        <a href={""}>View Store</a>*/}
+                        {/*    </div>*/}
+                        {/*</Col>*/}
+                        {/*<Col md={3}>*/}
+                        {/*    <div className={"vendor-box"}>*/}
+                        {/*        <img src={fi} className={'img-fluid'}/>*/}
+                        {/*        <h3>Flipkart</h3>*/}
+                        {/*        <p>Lorem Ipsum is simply dummy*/}
+                        {/*            text of the printing and*/}
+                        {/*            typesetting industry.</p>*/}
+                        {/*        <a href={""}>View Store</a>*/}
+                        {/*    </div>*/}
+                        {/*</Col>*/}
                     </Row>
                 </Container>
             </div>
