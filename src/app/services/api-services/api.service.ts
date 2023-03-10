@@ -1,5 +1,5 @@
 import axios from "axios";
-import {toast} from "react-toastify";
+import {toast} from 'react-toastify';
 
 /**
  * This file doesn't do much. It's just a wrapper for axios that only exists to:
