@@ -17,7 +17,7 @@ export default function TrackOrder() {
     const {myState, setMyState} = useUserContext()
     const navigate = useNavigate();
     const [singlePayment, setSinglePayment] = useState<IPaymentListing>()
-
+    const navigator = useNavigate()
     const {id} = useParams()
 
 
@@ -70,7 +70,7 @@ export default function TrackOrder() {
                             <h4 className={'order-id'}>Order ID: {singlePayment?.id}</h4>
                         </Col>
                         <Col className={'d-flex justify-content-end align-items-center'}>
-                            {singlePayment ? <button className={'btn btn-dispute'} >View Dispute</button> : <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>}
+                            {singlePayment?.dispute ? <button className={'btn btn-dispute'} onClick={()=> navigator(`/dispute-placed/${singlePayment?.id}`)}>View Dispute</button> : <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>}
                         </Col>
                     </Row>
                     <Row>
