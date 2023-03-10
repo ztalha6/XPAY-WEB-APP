@@ -38,7 +38,7 @@ function RouteConfig() {
                     <Route path="/track-order/:id" element={<TrackOrder/>} />
 
                     <Route path="/dispute/:id" element={<Dispute/>} />
-                    <Route path="/dispute-placed" element={<DisputePlaced/>} />
+                    <Route path="/dispute-placed/:id" element={<DisputePlaced/>} />
                 </Route>
                 {/*APP LAYOUT ROUTES*/}
                 {/*<Route element={*/}

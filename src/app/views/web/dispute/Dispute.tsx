@@ -37,7 +37,7 @@ export default function Dispute() {
             }
             const res = await DisputeService.openDispute(data)
             if(res.status) {
-                navigator(  `/`)
+                navigator(  `/dispute-placed/${res.data.id}`)
             }
         }
     };
