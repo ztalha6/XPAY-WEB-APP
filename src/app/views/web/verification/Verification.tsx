@@ -1,15 +1,18 @@
-import React, {Dispatch, SetStateAction} from 'react';
-import {Button, Form} from 'antd';
+import React, {Dispatch, SetStateAction, useState} from 'react';
+import {Button, Form, Spin} from 'antd';
 import OtpInput from 'react-otp-input';
 import {DisputeService} from "../../../services/api-services/dispute.service";
 import {useNavigate} from "react-router-dom";
+import {LoadingOutlined} from '@ant-design/icons';
 
 const OtpForm = ({setOpen, guestUserId,paymentId}: {
+
     setOpen: Dispatch<SetStateAction<boolean>>,
     guestUserId: number,paymentId:number}) => {
     const [otp, setOtp] = React.useState('');
     const navigator = useNavigate()
-
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 ,color:'white' }} spin />;
+    const [loading,setLoading] = useState<boolean>(false)
 
     const handleChange = (value:any) => {
         setOtp(value);
@@ -17,6 +20,8 @@ const OtpForm = ({setOpen, guestUserId,paymentId}: {
 
     const onFinish = async (values:{otp: string}) => {
         console.log('Received values of form:', values);
+        setLoading(true)
+
         const data = {
             code: values.otp,
             guest_user_id: guestUserId
@@ -26,6 +31,7 @@ const OtpForm = ({setOpen, guestUserId,paymentId}: {
             setOpen(false)
             navigator(  `/dispute/${paymentId}`)
         }
+        setLoading(false)
     };
 
     return (
@@ -51,9 +57,11 @@ const OtpForm = ({setOpen, guestUserId,paymentId}: {
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit">
+                {loading ? <Button type="primary" >
+                    <Spin indicator={antIcon} />
+                </Button> : <Button type="primary" htmlType="submit">
                     Submit
-                </Button>
+                </Button>}
             </Form.Item>
         </Form>
     );

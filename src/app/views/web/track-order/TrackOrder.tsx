@@ -11,14 +11,18 @@ import {IPaymentListing, IPaymentOrderItem} from "../../../interfaces/IPayment";
 import ThemeModal from "../../../components/modal/Modal";
 import Verification from "../verification/Verification";
 import {DisputeService} from "../../../services/api-services/dispute.service";
+import {LoadingOutlined} from '@ant-design/icons';
+import {Spin} from "antd";
 
 export default function TrackOrder() {
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 ,color:'white' }} spin />;
     const[open, setOpen] = useState<boolean>(false);
     const {myState, setMyState} = useUserContext()
     const navigate = useNavigate();
     const [singlePayment, setSinglePayment] = useState<IPaymentListing>()
     const navigator = useNavigate()
     const {id} = useParams()
+    const [loading,setLoading] = useState<boolean>(false)
 
 
     const getPayment = async () => {
@@ -36,6 +40,7 @@ export default function TrackOrder() {
 
     const DisputePage = async () => {
         if(singlePayment?.id) {
+            setLoading(true)
             const data = {
                 transaction_id: singlePayment.id
             }
@@ -43,6 +48,7 @@ export default function TrackOrder() {
             if(res.status){
                 setOpen(true)
             }
+            setLoading(false)
         }
         // navigate('/dispute');
     }
@@ -70,7 +76,7 @@ export default function TrackOrder() {
                             <h4 className={'order-id'}>Order ID: {singlePayment?.id}</h4>
                         </Col>
                         <Col className={'d-flex justify-content-end align-items-center'}>
-                            {singlePayment?.dispute ? <button className={'btn btn-dispute'} onClick={()=> navigator(`/dispute-placed/${singlePayment?.id}`)}>View Dispute</button> : <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>}
+                            {loading ? <button className={'btn btn-dispute'} ><Spin indicator={antIcon} /></button> : ( singlePayment?.dispute ? <button className={'btn btn-dispute'} onClick={()=> navigator(`/dispute-placed/${singlePayment?.id}`)}>View Dispute</button> : <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>)}
                         </Col>
                     </Row>
                     <Row>

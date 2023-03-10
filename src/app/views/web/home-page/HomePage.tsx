@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Form, Input} from 'antd';
+import {Form, Input, Spin} from 'antd';
 import "./home-page.scss"
 import {Col, Container, Row} from "react-bootstrap";
 import fi from "../../../../assets/images/icons/vendors/flip.png"
@@ -12,11 +12,14 @@ import CtaForm from "../../../components/ctaform/CtaForm";
 import iphone from "../../../../assets/images/iphone.png"
 import appStore from "../../../../assets/images/app-store.png"
 import andriod from "../../../../assets/images/andriod.png"
+import {LoadingOutlined} from '@ant-design/icons';
+
 
 export default function HomePage() {
-
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 ,color:'white' }} spin />;
     const {myState, setMyState} = useUserContext()
     const navigator = useNavigate()
+    const [loading,setLoading] = useState<boolean>(false)
     const [integratedBusinesses, setIntegratedBusinesses] = useState<IVendorBusinessDetail[]>([])
 
 
@@ -35,11 +38,13 @@ export default function HomePage() {
     },[])
 
     const onFinish = async (values: ITrackPayment) => {
+        setLoading(true)
         console.log('Success:', values);
         const res = await PaymentServices.getById(values.track_num)
         if(res.status) {
             navigator(  `/track-order/${res.data.id}`)
         }
+        setLoading(false)
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -74,7 +79,7 @@ export default function HomePage() {
                                         {/*        Submit*/}
                                         {/*    </Button>*/}
                                         {/*</Form.Item>*/}
-                                        <button type={"submit"} className={'btn btn-search'}>Track</button>
+                                        {loading ? <button className={'btn btn-search'}><Spin indicator={antIcon} /></button> : <button type={"submit"} className={'btn btn-search'}>Track</button>}
                                     </div>
                                 </Form>
                             </div>

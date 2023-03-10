@@ -3,7 +3,7 @@ import './App.css';
 import RouteConfig from "./app/utils/RouterConfig";
 import {BrowserRouter} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
-
+import 'react-toastify/dist/ReactToastify.css';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 

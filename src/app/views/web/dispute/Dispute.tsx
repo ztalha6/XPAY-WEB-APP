@@ -2,15 +2,17 @@ import React, {useEffect, useState} from "react"
 import {Col, Container, Row} from "react-bootstrap";
 import {useUserContext} from "../../../providers/UserProvider";
 import BreadCrumb from "../../../components/breadcrumb/BreadCrumb";
-import {Form, Input} from "antd";
+import {Form, Input, Spin} from "antd";
 import TextArea from "antd/es/input/TextArea";
 import "./dispute.scss"
 import ImageUpload from "../../../components/ImageUpload";
 import {useNavigate, useParams} from "react-router-dom";
 import {DisputeService} from "../../../services/api-services/dispute.service";
-
+import {LoadingOutlined} from '@ant-design/icons';
 
 export default function Dispute() {
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 ,color:'white' }} spin />;
+    const [loading,setLoading] = useState<boolean>(false)
     const[open, setOpen] = useState<boolean>(false);
     const {myState, setMyState} = useUserContext()
     const [media,setMedia] = useState<{path: string}[]>([])
@@ -23,6 +25,7 @@ export default function Dispute() {
     const onFinish = async (values: any) => {
         console.log('Success:', values);
         if(id) {
+            setLoading(true)
             const data = {
                 payment_id : id,
                 comments: values.comments,
@@ -39,6 +42,8 @@ export default function Dispute() {
             if(res.status) {
                 navigator(  `/dispute-placed/${res.data.id}`)
             }
+            setLoading(false)
+
         }
     };
 
@@ -135,7 +140,7 @@ export default function Dispute() {
                             {/*        Submit*/}
                             {/*    </Button>*/}
                             {/*</Form.Item>*/}
-                            <button type={"submit"} className={'btn btn-dispute'}>Place Dispute</button>
+                            {loading ?  <button className={'btn btn-dispute'}><Spin indicator={antIcon} /></button> :  <button type={"submit"} className={'btn btn-dispute'}>Place Dispute</button> }
 
                         </Form>
                     </Col>
