@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {Form, Input} from 'antd';
-
 import "./home-page.scss"
 import {Col, Container, Row} from "react-bootstrap";
 import fi from "../../../../assets/images/icons/vendors/flip.png"
@@ -9,6 +8,10 @@ import {ITrackPayment, IVendorBusinessDetail} from "../../../interfaces/IPayment
 import {PaymentServices} from "../../../services/api-services/payment.service";
 import {useNavigate} from "react-router-dom";
 import {IntegratedBusinessService} from "../../../services/api-services/integrated-business.service";
+import CtaForm from "../../../components/ctaform/CtaForm";
+import iphone from "../../../../assets/images/iphone.png"
+import appStore from "../../../../assets/images/app-store.png"
+import andriod from "../../../../assets/images/andriod.png"
 
 export default function HomePage() {
 
@@ -137,6 +140,27 @@ export default function HomePage() {
                         {/*        <a href={""}>View Store</a>*/}
                         {/*    </div>*/}
                         {/*</Col>*/}
+                    </Row>
+                </Container>
+            </div>
+            <div className={"cta-section"}>
+                <Container>
+                    <Row>
+                        <Col className={"text-center"} md={6}>
+                            <img src={iphone} className={"img-fluid ihpone-img"}/>
+                        </Col>
+                        <Col className={"d-flex align-items-center"} md={6}>
+                            <div>
+                                <h2>The Power is in Your Hands</h2>
+                                <p>We will send you a link, open it on your phone to download the app.</p>
+                                <CtaForm/>
+                                <p>Download app from</p>
+                                <div>
+                                    <img src={andriod} className={"img-fluid me-3"}/>
+                                    <img src={appStore} className={"img-fluid"}/>
+                                </div>
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
             </div>

@@ -1,0 +1,250 @@
+.cta-form{
+  font-family: Poppins;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.714rem;
+  .dfields{
+    margin: 15px 0;
+    min-width: 300px;
+    .label-in{
+      background-color: white;
+      border-radius: 10px;
+      &.field-box{
+        height: 50px;
+        padding: 15px 10px;
+        .form-group{
+          text-align: left;
+          label{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 0.857rem;
+            line-height: 1.286rem;
+            /* identical to box height */
+            color: #404040;
+          }
+          .form-control{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.071rem;
+            line-height: 1.5rem;
+            color: #404040;
+          }
+        }
+      }
+      &.field-white{
+        .input-icon{
+          color: var(--theme-primary);
+        }
+      }
+    }
+  }
+  .ant-radio-group{
+    width: 100%;
+    .ant-space{
+      width: 100%;
+      .ant-radio-wrapper{
+        width: 100%;
+        span:nth-of-type(2){
+          width: 100%;
+          p{
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5rem;
+            color: #666666;
+          }
+        }
+        .ant-radio{
+          .ant-radio-inner{
+            border-color:var(--theme-primary);
+            border: 1.5px solid var(--theme-primary);
+
+          }
+          &.ant-radio-checked{
+            .ant-radio-inner{
+              background: var(--theme-primary);
+              &:after{
+                background-color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .form-btn{
+    margin-bottom: 15px;
+    .btn-save{
+      height: 48px;
+      background-color: var(--theme-primary);
+      border: 1px solid transparent;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.143rem;
+      color: #FFFFFF;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1420px) {
+}
+@media screen and  (min-width: 992px) and (max-width: 1200px) {
+
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .cta-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .dfields{
+      margin: 15px 0;
+      .label-in{
+        background-color: white;
+        border-radius: 10px;
+        &.field-box{
+          height: 50px;
+          padding: 15px 10px;
+          .form-group{
+            text-align: left;
+            label{
+              font-size: 0.857rem;
+              line-height: 1.286rem;
+              color: #404040;
+            }
+            .form-control{
+              font-size: 1.071rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+        &.field-white{
+          .input-icon{
+            color: var(--theme-primary);
+          }
+        }
+      }
+    }
+    .ant-radio-group{
+      width: 100%;
+      .ant-space{
+        width: 100%;
+        .ant-radio-wrapper{
+          width: 100%;
+          span:nth-of-type(2){
+            width: 100%;
+            p{
+              font-size: 1rem;
+              line-height: 1.5rem;
+            }
+          }
+          .ant-radio{
+            .ant-radio-inner{
+              border-color:var(--theme-primary);
+              border: 1.5px solid var(--theme-primary);
+
+            }
+            &.ant-radio-checked{
+              .ant-radio-inner{
+                background: var(--theme-primary);
+                &:after{
+                  background-color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .form-btn{
+      margin-bottom: 15px;
+      .btn-save{
+        height: 48px;
+        background-color: var(--theme-primary);
+        border: 1px solid transparent;
+        font-size: 1rem;
+        color: #FFFFFF;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+  .cta-form{
+    display: flex;
+    align-items: center;
+    .dfields{
+      margin: 15px 0;
+      .label-in{
+        background-color: white;
+        border-radius: 10px;
+        &.field-box{
+          height: 50px;
+          padding: 15px 10px;
+          .form-group{
+            text-align: left;
+            label{
+              font-size: 0.857rem;
+              line-height: 1.286rem;
+              color: #404040;
+            }
+            .form-control{
+              font-size: 1.071rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+        &.field-white{
+          .input-icon{
+            color: var(--theme-primary);
+          }
+        }
+      }
+    }
+    .ant-radio-group{
+      width: 100%;
+      .ant-space{
+        width: 100%;
+        .ant-radio-wrapper{
+          width: 100%;
+          span:nth-of-type(2){
+            width: 100%;
+            p{
+              font-size: 1rem;
+              line-height: 1.5rem;
+            }
+          }
+          .ant-radio{
+            .ant-radio-inner{
+              border-color:var(--theme-primary);
+              border: 1.5px solid var(--theme-primary);
+
+            }
+            &.ant-radio-checked{
+              .ant-radio-inner{
+                background: var(--theme-primary);
+                &:after{
+                  background-color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .form-btn{
+      margin-bottom: 15px;
+      .btn-save{
+        height: 48px;
+        background-color: var(--theme-primary);
+        border: 1px solid transparent;
+        font-size: 1rem;
+        color: #FFFFFF;
+        border-radius: 10px;
+      }
+    }
+  }
+}
