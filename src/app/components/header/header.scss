@@ -10,7 +10,7 @@ header{
     font-weight: 600;
     font-size: 14px;
     color: #FFFFFF;
-    background: #1758FF;
+    background: #267A42;
     border-radius: 5px;
     padding: 10px 40px;
     &:hover{
@@ -22,8 +22,8 @@ header{
     position: relative;
     .btn-login{
       &:hover{
-        color:#1758FF ;
-        border: 1px solid #1758FF;
+        color:#267A42 ;
+        border: 1px solid #267A42;
       }
     }
     .ant-row{
@@ -33,7 +33,7 @@ header{
     .menu{
       ul{
         li{
-          color: #1758FF;
+          color: #267A42;
           a{
             color: #707581;
           }

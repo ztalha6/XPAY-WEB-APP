@@ -1,5 +1,5 @@
 .home-banner{
-  background: #142C8E;
+  background:  #267A42;
   height: 650px;
   background-image: url(../../../../assets/images/banner7.jpeg);
   background-repeat: no-repeat;
@@ -10,10 +10,11 @@
     width: 100%;
     height: 100%;
     background: black;
+    background-image: linear-gradient(to bottom right,  black ,  #267A42);
     position: absolute;
     content: '';
     top: 0;
-    opacity: 0.4;
+    opacity: 0.7;
   }
   //&:after{
   //  width: 100%;
@@ -65,7 +66,7 @@
         }
       }
       .btn-search{
-        background: #1758FF;
+        background: #267A42;
         box-shadow: 0.904149px 36.166px 27.1245px rgba(23, 88, 255, 0.15);
         border-radius: 6.17978px;
         width: 160px;
@@ -80,7 +81,7 @@
   .affix{
     margin: 10px auto;
     max-width: 800px;
-    //background: #1758FF;
+    //background: #267A42;
     border-radius: 5px;
     z-index: 9;
     position: relative;
@@ -107,7 +108,7 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 147.5%;
-    color: #0178E5;
+    color: #267A42;
   }
   p{
     font-style: normal;
@@ -159,5 +160,49 @@
       margin: 20px auto;
       min-width: 160px;
     }
+  }
+}
+
+.cta-section{
+  background: #267A42;
+  h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    color: #FFFFFF;
+  }
+  p{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+  }
+.ihpone-img{
+  margin-right: -200px;
+  margin-top: 50px;
+}
+  .ant-form-item{
+    label{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 27px;
+      color: white;
+    }
+    .ant-input{
+      border-radius: 3px;
+      padding: 8px 10px;
+    }
+  }
+  .btn-share{
+    border: 1.5px solid #FFFFFF;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 27px;
+    color: white;
+    margin-top: 25px;
   }
 }
