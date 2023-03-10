@@ -5,6 +5,7 @@ import HomePage from "../views/web/home-page/HomePage";
 import TrackOrder from "../views/web/track-order/TrackOrder";
 import UserProvider from "../providers/UserProvider";
 import Dispute from "../views/web/dispute/Dispute";
+import DisputePlaced from "../views/web/dispute/DisputePlaced";
 
 
 function RouteConfig() {
@@ -35,7 +36,9 @@ function RouteConfig() {
                 >
                     <Route index element={<HomePage/>} />
                     <Route path="/track-order/:id" element={<TrackOrder/>} />
+
                     <Route path="/dispute/:id" element={<Dispute/>} />
+                    <Route path="/dispute-placed" element={<DisputePlaced/>} />
                 </Route>
                 {/*APP LAYOUT ROUTES*/}
                 {/*<Route element={*/}

@@ -16,7 +16,6 @@
     color: #646C7C;
     margin-bottom: 30px;
   }
-  font-family: Poppins;
   .ant-form-item{
     label{
       font-family: Poppins;
@@ -51,6 +50,165 @@
     &:hover{
       border: 1px solid #EC3333;
       color: #EC3333;
+    }
+  }
+}
+
+.dispute-placed{
+  .dispute-box{
+    h3{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 32px;
+      color: #1C212D;
+    }
+    p{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      text-align: center;
+      color: #707581;
+    }
+  }
+  .cart{
+    margin-top: 40px;
+    ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(0,0,0,0.07);
+        padding-bottom: 25px;
+        .cart-col-1{
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          width: 100%;
+          .cart-detail{
+            h4{
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              color: #344054;
+            }
+            ul{
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              li{
+                border-right: 1px solid #D4D4D4;
+                padding-right: 15px;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .thankyou-box{
+    font-family: 'Poppins';
+    background: white;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 100%;
+    padding: 5% 5%;
+    margin-top: 40px;
+    .btn-sec{
+      text-align: center;
+      .btn-home{
+        text-align: center;
+        background: #267A42;
+        box-shadow: 0.904149px 36.166px 27.1245px rgba(38, 122, 66, 0.15);
+        border-radius: 6.17978px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 147.5%;
+        color: #FFFFFF;
+        padding: 10px 30px;
+      }
+    }
+
+    .order-details{
+      padding-bottom: 20px;
+      border-bottom: 2px dashed #e7e7e7;
+      h3{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: var(--theme-font-color);
+        margin-bottom: 27px;
+      }
+      p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #828482;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+    .cart-details{
+      padding-top: 20px;
+      ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        h4{
+          margin-top: 0;
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 180%;
+          color: var(--theme-font-color);
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+        p{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          color: #828482;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+      p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #828482;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 5px 0;
+      }
     }
   }
 }
