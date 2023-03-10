@@ -29,7 +29,7 @@ export default function TrackOrder() {
 
     useEffect(()=>{
         setMyState('fixed')
-        getPayment()
+        getPayment() 
     },[])
 
     function DisputePage() {
