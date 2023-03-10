@@ -2,22 +2,44 @@ import React, {useEffect, useState} from "react"
 import {Col, Container, Row} from "react-bootstrap";
 import {useUserContext} from "../../../providers/UserProvider";
 import BreadCrumb from "../../../components/breadcrumb/BreadCrumb";
-import {Button, Form, Input, Upload} from "antd";
-import {UploadOutlined} from '@ant-design/icons';
+import {Form, Input} from "antd";
 import TextArea from "antd/es/input/TextArea";
 import "./dispute.scss"
-import ThemeModal from "../../../components/modal/Modal";
-import Verification from "../verification/Verification";
+import ImageUpload from "../../../components/ImageUpload";
+import {useNavigate, useParams} from "react-router-dom";
+import {DisputeService} from "../../../services/api-services/dispute.service";
 
 
 export default function Dispute() {
     const[open, setOpen] = useState<boolean>(false);
     const {myState, setMyState} = useUserContext()
+    const [media,setMedia] = useState<{path: string}[]>([])
+    const {id} = useParams()
+    const navigator = useNavigate()
+
     useEffect(()=>{
         setMyState('fixed')
     })
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log('Success:', values);
+        if(id) {
+            const data = {
+                payment_id : id,
+                comments: values.comments,
+                dispute_media: media.map((data:{path: string})=> {
+                    return (
+                        {
+                            type: 'image',
+                            path: data.path
+                        }
+                    )
+                })
+            }
+            const res = await DisputeService.openDispute(data)
+            if(res.status) {
+                navigator(  `/`)
+            }
+        }
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -70,15 +92,6 @@ export default function Dispute() {
                                     </Form.Item>
                                 </Col>
                                 <Col md={12}>
-                                    <Form.Item
-                                        name="phone"
-                                        label={'Mobile Number'}
-                                        rules={[{ required: true, message: 'Phone Required' }]}
-                                    >
-                                        <Input placeholder={'123 456 7890'} />
-                                    </Form.Item>
-                                </Col>
-                                <Col md={12}>
                                     {/*<Form.Item*/}
                                     {/*    name="image"*/}
                                     {/*    label={'Uplaod Image'}*/}
@@ -100,19 +113,16 @@ export default function Dispute() {
                                         valuePropName="fileList"
                                         getValueFromEvent={normFile}
                                         rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please upload an image',
-                                                },
-                                            ]}
+                                        ]}
                                     >
-                                        <Upload name="logo" listType="picture">
-                                            <Button icon={<UploadOutlined />}>Click to upload</Button>
-                                        </Upload>
+                                        {/*<Upload name="logo" listType="picture">*/}
+                                        {/*    <Button icon={<UploadOutlined />}>Click to upload</Button>*/}
+                                        {/*</Upload>*/}
+                                        <ImageUpload maxCount={3} setValue={setMedia} fieldName={"media"} aspect={1567/443}  getValues={media} />
                                     </Form.Item>
                                 </Col>
                                 <Col>
-                                    <Form.Item name={'instruction'} label="TextArea">
+                                    <Form.Item name={'comments'} label="Comments">
                                         <TextArea rows={4} />
                                     </Form.Item>
                                 </Col>
@@ -120,11 +130,11 @@ export default function Dispute() {
 
 
 
-                                {/*<Form.Item>*/}
-                                {/*    <Button type="primary" htmlType="submit">*/}
-                                {/*        Submit*/}
-                                {/*    </Button>*/}
-                                {/*</Form.Item>*/}
+                            {/*<Form.Item>*/}
+                            {/*    <Button type="primary" htmlType="submit">*/}
+                            {/*        Submit*/}
+                            {/*    </Button>*/}
+                            {/*</Form.Item>*/}
                             <button type={"submit"} className={'btn btn-dispute'}>Place Dispute</button>
 
                         </Form>

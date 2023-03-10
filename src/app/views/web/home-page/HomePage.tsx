@@ -97,7 +97,7 @@ export default function HomePage() {
                             return (
                                 <Col md={3}>
                                     <div className={"vendor-box"}>
-                                        <img src={fi} className={'img-fluid'}/>
+                                        <img src={integratedBusiness?.user_business_image?.mediaUrl||fi} className={'img-fluid'}/>
                                         <h3>{integratedBusiness.business_name}</h3>
                                         <p>Lorem Ipsum is simply dummy
                                             text of the printing and

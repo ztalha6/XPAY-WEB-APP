@@ -10,6 +10,7 @@ import {PaymentServices} from "../../../services/api-services/payment.service";
 import {IPaymentListing, IPaymentOrderItem} from "../../../interfaces/IPayment";
 import ThemeModal from "../../../components/modal/Modal";
 import Verification from "../verification/Verification";
+import {DisputeService} from "../../../services/api-services/dispute.service";
 
 export default function TrackOrder() {
     const[open, setOpen] = useState<boolean>(false);
@@ -32,10 +33,20 @@ export default function TrackOrder() {
         getPayment()
     },[])
 
-    function DisputePage() {
-        setOpen(!open)
+
+    const DisputePage = async () => {
+        if(singlePayment?.id) {
+            const data = {
+                transaction_id: singlePayment.id
+            }
+            const res = await DisputeService.sendGuestVerificationCode(data)
+            if(res.status){
+                setOpen(true)
+            }
+        }
         // navigate('/dispute');
     }
+
     return(
         <>
             <ThemeModal
@@ -43,7 +54,8 @@ export default function TrackOrder() {
                 setActive={setOpen}
                 width={750}
                 children={
-                    <Verification/>
+                    <Verification setOpen={setOpen}
+                                  guestUserId={singlePayment?.guest_user_id || 0} paymentId={singlePayment?.id || 0}/>
                 }
             />
             <div className={"track-order"}>
@@ -58,7 +70,7 @@ export default function TrackOrder() {
                             <h4 className={'order-id'}>Order ID: {singlePayment?.id}</h4>
                         </Col>
                         <Col className={'d-flex justify-content-end align-items-center'}>
-                            <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>
+                            {singlePayment ? <button className={'btn btn-dispute'} >View Dispute</button> : <button className={'btn btn-dispute'} onClick={DisputePage}>Dispute</button>}
                         </Col>
                     </Row>
                     <Row>
